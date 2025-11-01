@@ -289,7 +289,7 @@ namespace linq
             //Console.WriteLine("8. " + string.Join(", ", q8));
             #endregion
 
-            //#region Transformation Operators
+            #region Transformation Operators
             //var q1 = products.Select(p => p.Name);
             //Console.WriteLine("1. " + string.Join(", ", q1));
 
@@ -323,7 +323,30 @@ namespace linq
             //var q7 = orders.Where(o => o.OrderDate.Year >= 1998);
             //Console.WriteLine("7.");
             //foreach (var o in q7) Console.WriteLine($"Order {o.OrderID} - Date: {o.OrderDate.ToShortDateString()}");
-            //#endregion
+            #endregion
+
+            #region Set Operators
+            var q1 = ListGenerator.ProductsList.Select(p => p.Category).Distinct();
+            Console.WriteLine("1. " + string.Join(", ", q1));
+
+            var q2 = ListGenerator.ProductsList.Select(p => p.ProductName[0])
+                             .Union(ListGenerator.CustomersList.Select(c => c.CustomerName[0]))
+                             .Distinct();
+            Console.WriteLine("2. " + string.Join(", ", q2));
+
+            var q3 = ListGenerator.ProductsList.Select(p => p.ProductName[0])
+                             .Intersect(ListGenerator.CustomersList.Select(c => c.CustomerName[0]));
+            Console.WriteLine("3. " + string.Join(", ", q3));
+
+            var q4 = ListGenerator.ProductsList.Select(p => p.ProductName[0])
+                             .Except(ListGenerator.CustomersList.Select(c => c.CustomerName[0]));
+            Console.WriteLine("4. " + string.Join(", ", q4));
+
+            var q5 = ListGenerator.ProductsList.Select(p => p.ProductName.Length >= 3 ? p.ProductName.Substring(p.ProductName.Length - 3) : p.ProductName)
+                             .Concat(ListGenerator.CustomersList.Select(c => c.CustomerName.Length >= 3 ? c.CustomerName.Substring(c.CustomerName.Length - 3) : c.CustomerName));
+            Console.WriteLine("5. " + string.Join(", ", q5));
+            #endregion
+
 
         }
     }   } 
