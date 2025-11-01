@@ -209,15 +209,47 @@ namespace linq
                 Console.WriteLine($"14. {item.Category} → Average Price: {item.AveragePrice:F2}");
             }
 
-                #endregion
+            #endregion
 
 
-                #endregion
+            #endregion
+
+            #region Element Operators
+            //1
+            var firstOutOfStock = ListGenerator.ProductsList.FirstOrDefault(p => p.UnitsInStock == 0);
+
+            if (firstOutOfStock != null)
+                Console.WriteLine($"out-of-stock product: {firstOutOfStock.ProductName}");
+            else
+                Console.WriteLine("no out of stock.");
+
+
+
+            //2
+            var expensiveProduct = ListGenerator.ProductsList.FirstOrDefault(p => p.UnitPrice > 1000);
+
+            if (expensiveProduct != null)
+                Console.WriteLine($"First product with Price > 1000: {expensiveProduct.ProductName} (${expensiveProduct.UnitPrice})");
+            else
+                Console.WriteLine(" No product found with Price > 1000.");
 
 
 
 
+            //3
 
-            
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            //int? secondGreaterThan5 = Arr.Where(n => n > 5).Skip(1).FirstOrDefault();
+
+            //if (secondGreaterThan5 != 0)
+            //    Console.WriteLine($"Second number greater than 5 = {secondGreaterThan5}");
+            //else
+            //    Console.WriteLine(" No second number greater than 5 ");
+            #endregion
+
+
+
+
         }
-        }   } 
+    }   } 
