@@ -248,8 +248,33 @@ namespace linq
             //    Console.WriteLine(" No second number greater than 5 ");
             #endregion
 
+            #region Ordering Operators
 
 
 
-        }
-    }   } 
+
+
+
+            //1
+
+            var q1 = ListGenerator.ProductsList.OrderBy(p => p.ProductName);
+                foreach (var p in q1) Console.WriteLine($"1. {p.ProductName}");
+                //2
+                string[] Arr1 = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+                var q2 = Arr1.OrderBy(w => w, StringComparer.OrdinalIgnoreCase);
+                Console.WriteLine("2. " + string.Join(", ", q2));
+            //3
+                var q3 = ListGenerator.ProductsList.OrderByDescending(p => p.UnitsInStock);
+                foreach (var p in q3) Console.WriteLine($"3. {p.ProductName} ({p.UnitsInStock})");
+                //4
+                string[] Arr2 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+                var q4 = Arr2.OrderBy(w => w.Length).ThenBy(w => w);
+                Console.WriteLine("4. " + string.Join(", ", q4));
+            
+
+        #endregion
+
+
+
+    }
+}   } 
