@@ -392,6 +392,40 @@ namespace linq
 
 
             #endregion
+            #region Grouping Operators
+            //1
+            List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 
+            var result = numbers.GroupBy(n => n % 5)
+                                .Select(g => new { Remainder = g.Key, Numbers = g.ToList() });
+            foreach (var re in result) { Console.WriteLine(re); }
+            //2
+            string[] words2 = File.ReadAllLines("dictionary_english.txt");
+
+            var groupedWords = words
+                .Where(w => !string.IsNullOrEmpty(w))
+                .GroupBy(w => char.ToUpper(w[0]))
+                .Select(g => new { FirstLetter = g.Key, Words = g.ToList() });
+
+            foreach (var group in groupedWords)
+            {
+                Console.WriteLine($"Letter: {group.FirstLetter}");
+                Console.WriteLine(string.Join(", ", group.Words.Take(10)) + " ..."); // show first 10 words per group
+                Console.WriteLine();
+            }
+
+
+
+            //3
+            //string[] Arr = { "from", "salt", "earn", "last", "near", "form" };
+
+            //var grouped = Arr.GroupBy(w => w, new AnagramComparer());
+
+            //foreach (var group in grouped)
+            //{
+            //    Console.WriteLine($"Group: {string.Join(", ", group)}");
+            //}
+
+            #endregion
         }
     }   } 
