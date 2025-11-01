@@ -346,6 +346,25 @@ namespace linq
                              .Concat(ListGenerator.CustomersList.Select(c => c.CustomerName.Length >= 3 ? c.CustomerName.Substring(c.CustomerName.Length - 3) : c.CustomerName));
             Console.WriteLine("5. " + string.Join(", ", q5));
             #endregion
+            #region Partitioning Operators
+            var q1 = ListGenerator.CustomersList.Where(o => o.CustomerID== "WA").Take(3);
+            Console.WriteLine("1. " + string.Join(", ", q1.Select(o => $"Order {Customer.ReferenceEquals }")));
+
+            var q2 = orders.Where(o => o.CustomerState == "WA").Skip(2);
+            Console.WriteLine("2. " + string.Join(", ", q2.Select(o => $"Order {Customer.ReferenceEquals}")));
+
+            int[] numbers1 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var q3 = numbers1.TakeWhile((n, i) => n >= i);
+            Console.WriteLine("3. " + string.Join(", ", q3));
+
+            int[] numbers2 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var q4 = numbers2.SkipWhile(n => n % 3 != 0);
+            Console.WriteLine("4. " + string.Join(", ", q4));
+
+            int[] numbers3 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var q5 = numbers3.SkipWhile((n, i) => n >= i);
+            Console.WriteLine("5. " + string.Join(", ", q5));
+            #endregion
 
 
         }
