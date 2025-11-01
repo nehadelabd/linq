@@ -257,24 +257,73 @@ namespace linq
 
             //1
 
-            var q1 = ListGenerator.ProductsList.OrderBy(p => p.ProductName);
-                foreach (var p in q1) Console.WriteLine($"1. {p.ProductName}");
-                //2
-                string[] Arr1 = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
-                var q2 = Arr1.OrderBy(w => w, StringComparer.OrdinalIgnoreCase);
-                Console.WriteLine("2. " + string.Join(", ", q2));
-            //3
-                var q3 = ListGenerator.ProductsList.OrderByDescending(p => p.UnitsInStock);
-                foreach (var p in q3) Console.WriteLine($"3. {p.ProductName} ({p.UnitsInStock})");
-                //4
-                string[] Arr2 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-                var q4 = Arr2.OrderBy(w => w.Length).ThenBy(w => w);
-                Console.WriteLine("4. " + string.Join(", ", q4));
-            
-
-        #endregion
+            //var q1 = ListGenerator.ProductsList.OrderBy(p => p.ProductName);
+            //    foreach (var p in q1) Console.WriteLine($"1. {p.ProductName}");
+            //    //2
+            //    string[] Arr1 = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //    var q2 = Arr1.OrderBy(w => w, StringComparer.OrdinalIgnoreCase);
+            //    Console.WriteLine("2. " + string.Join(", ", q2));
+            ////3
+            //    var q3 = ListGenerator.ProductsList.OrderByDescending(p => p.UnitsInStock);
+            //    foreach (var p in q3) Console.WriteLine($"3. {p.ProductName} ({p.UnitsInStock})");
+            //    //4
+            //    string[] Arr2 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            //    var q4 = Arr2.OrderBy(w => w.Length).ThenBy(w => w);
+            //    Console.WriteLine("4. " + string.Join(", ", q4));
 
 
 
-    }
-}   } 
+            //string[] Arr1 = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var q5 = Arr1.OrderBy(w => w.Length).ThenBy(w => w, StringComparer.OrdinalIgnoreCase);
+            //Console.WriteLine("5. " + string.Join(", ", q5));
+
+            //var q6 = ListGenerator.ProductsList.OrderBy(p => p.Category).ThenByDescending(p => p.UnitPrice);
+            //foreach (var p in q6) Console.WriteLine($"6. {p.Category} - {p.ProductName} ({p.UnitPrice})");
+
+            //string[] Arr2 = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            //var q7 = Arr2.OrderBy(w => w.Length).ThenByDescending(w => w, StringComparer.OrdinalIgnoreCase);
+            //Console.WriteLine("7. " + string.Join(", ", q7));
+
+            //string[] Arr3 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            //var q8 = Arr3.Where(w => w.Length > 1 && w[1] == 'i').Reverse();
+            //Console.WriteLine("8. " + string.Join(", ", q8));
+            #endregion
+
+            //#region Transformation Operators
+            //var q1 = products.Select(p => p.Name);
+            //Console.WriteLine("1. " + string.Join(", ", q1));
+
+            //string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+            //var q2 = words.Select(w => new { Upper = w.ToUpper(), Lower = w.ToLower() });
+            //Console.WriteLine("2.");
+            //foreach (var w in q2) Console.WriteLine($"Upper: {w.Upper}, Lower: {w.Lower}");
+
+            //var q3 = products.Select(p => new { p.Name, p.Category, Price = p.UnitPrice });
+            //Console.WriteLine("3.");
+            //foreach (var p in q3) Console.WriteLine($"{p.Name} ({p.Category}) - {p.Price}");
+
+            //int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var q4 = Arr.Select((n, i) => new { Number = n, InPlace = (n == i) });
+            //Console.WriteLine("4.");
+            //foreach (var item in q4) Console.WriteLine($"Num: {item.Number}, Index: {item.InPlace}");
+
+            //int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            //int[] numbersB = { 1, 3, 5, 7, 8 };
+            //var q5 = from a in numbersA
+            //         from b in numbersB
+            //         where a < b
+            //         select new { A = a, B = b };
+            //Console.WriteLine("5.");
+            //foreach (var pair in q5) Console.WriteLine($"{pair.A} is less than {pair.B}");
+
+            //var q6 = orders.Where(o => o.Total < 500);
+            //Console.WriteLine("6.");
+            //foreach (var o in q6) Console.WriteLine($"Order {o.OrderID} - Total: {o.Total}");
+
+            //var q7 = orders.Where(o => o.OrderDate.Year >= 1998);
+            //Console.WriteLine("7.");
+            //foreach (var o in q7) Console.WriteLine($"Order {o.OrderID} - Date: {o.OrderDate.ToShortDateString()}");
+            //#endregion
+
+        }
+    }   } 
