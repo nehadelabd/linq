@@ -28,6 +28,10 @@ namespace linq
             #endregion
             #region 3. Returns digits whose name is shorter than their value.
             string[] Arr = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            var result = Arr
+           .Select((name, index) => new { Name = name, Value = index })
+            .Where(d => d.Name.Length < d.Value)
+            .Select(d => d.Name);
 
 
             #endregion
