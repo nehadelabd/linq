@@ -347,25 +347,51 @@ namespace linq
             Console.WriteLine("5. " + string.Join(", ", q5));
             #endregion
             #region Partitioning Operators
-            var q1 = ListGenerator.CustomersList.Where(o => o.CustomerID== "WA").Take(3);
-            Console.WriteLine("1. " + string.Join(", ", q1.Select(o => $"Order {Customer.ReferenceEquals }")));
+            //var q1 = ListGenerator.CustomersList.Where(o => o.CustomerID== "WA").Take(3);
+            //Console.WriteLine("1. " + string.Join(", ", q1.Select(o => $"Order {Customer.ReferenceEquals }")));
 
-            var q2 = orders.Where(o => o.CustomerState == "WA").Skip(2);
-            Console.WriteLine("2. " + string.Join(", ", q2.Select(o => $"Order {Customer.ReferenceEquals}")));
+            //var q2 = ListGenerator.orders.Where(o => o.CustomerState == "WA").Skip(2);
+            //Console.WriteLine("2. " + string.Join(", ", q2.Select(o => $"Order {Customer.ReferenceEquals}")));
 
-            int[] numbers1 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var q3 = numbers1.TakeWhile((n, i) => n >= i);
-            Console.WriteLine("3. " + string.Join(", ", q3));
+            //int[] numbers1 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var q3 = numbers1.TakeWhile((n, i) => n >= i);
+            //Console.WriteLine("3. " + string.Join(", ", q3));
 
-            int[] numbers2 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var q4 = numbers2.SkipWhile(n => n % 3 != 0);
-            Console.WriteLine("4. " + string.Join(", ", q4));
+            //int[] numbers2 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var q4 = numbers2.SkipWhile(n => n % 3 != 0);
+            //Console.WriteLine("4. " + string.Join(", ", q4));
 
-            int[] numbers3 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-            var q5 = numbers3.SkipWhile((n, i) => n >= i);
-            Console.WriteLine("5. " + string.Join(", ", q5));
+            //int[] numbers3 = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            //var q5 = numbers3.SkipWhile((n, i) => n >= i);
+            //Console.WriteLine("5. " + string.Join(", ", q5));
             #endregion
+            #region Quantifiers
+            //string[] words = File.ReadAllLines("dictionary_english.txt");
+            //bool q1 = words.Any(w => w.Contains("ei"));
+            //Console.WriteLine($"1. Any word contains 'ei': {q1}");
 
+            // 2. Grouped list of products for categories with at least one out of stock
+            //var q2 = ListGenerator.ProductsList 
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.Any(p => p.UnitsInStock == 0))
+            //    .Select(g => new { Category = g.Key, Products = g.ToList() });
+
+            //Console.WriteLine("\n2. Categories ");
+            //foreach (var g in q2)
+            //    Console.WriteLine($"Category: {g.p.Category}, Products: {string.Join(", ", g.ListGenerator.ProductsList.Select(p => p.Name))}");
+
+            // 3. Grouped list of products for categories where all products are in stock
+            //var q3 = ListGenerator.ProductsList
+            //    .GroupBy(p => p.Category)
+            //    .Where(g => g.All(p => p.UnitsInStock > 0))
+            //    .Select(g => new { Category = g.Key, Products = g.ToList() });
+
+            //Console.WriteLine("\n3. Categories where all products are in stock:");
+            //foreach (var g in q3)
+            //    Console.WriteLine($"Category: {g.Category}, Products: {string.Join(", ", g.ProductsList.Select(p => p.Name))}");
+
+
+            #endregion
 
         }
     }   } 
